@@ -482,7 +482,7 @@
 <p><img src="https://pic.imgdb.cn/item/66a8f6f7d9c307b7e948aa2c.png" alt="image-20240629153750432"></p>
 <h4 id="消息模板配置"><a href="#消息模板配置" class="headerlink" title="消息模板配置"></a>消息模板配置</h4><p>主要配置消息模板，每个消息模板都有唯一的模板编码，一个消息模板可以有多个适用规则，比如一个模板有短信和站内信的适用规则，那么当调用者使用这个模板时，会同时发送一个站内信（首页待办消息展示）和一封邮件信息</p>
 <p>列表页面如图所示</p>
-<p><img src="https://pic.imgdb.cn/item/66a8f707d9c307b7e948b962.png" alt="image-20240629160941046"></p>
+<p><img src="https://pic.imgdb.cn/item/66a8f707d9c307b7e948b962.png"></p>
 <p>修改页面如图所示</p>
 <ul>
 <li>短信相关配置只有适用规则为短信才必填</li>
@@ -490,11 +490,11 @@
 <li>短信模板编码由阿里云短信服务提供</li>
 <li>调用者的参数字段名称需要和模板内容的${}表达式中的名称一致（使用了freemarker进行模板渲染）</li>
 </ul>
-<p><img src="https://pic.imgdb.cn/item/66a8f718d9c307b7e948c890.png" alt="image-20240629161156242"></p>
+<p><img src="https://pic.imgdb.cn/item/66a8f718d9c307b7e948c890.png"></p>
 <h4 id="消息发送记录"><a href="#消息发送记录" class="headerlink" title="消息发送记录"></a>消息发送记录</h4><p>主要查看消息有没有发送成功</p>
-<p><img src="https://pic.imgdb.cn/item/66a8f729d9c307b7e948d917.png" alt="image-20240629161527100"></p>
+<p><img src="https://pic.imgdb.cn/item/66a8f729d9c307b7e948d917.png"></p>
 <h4 id="消息接收中心"><a href="#消息接收中心" class="headerlink" title="消息接收中心"></a>消息接收中心</h4><p>主要显示站内信发送情况</p>
-<p><img src="https://pic.imgdb.cn/item/66a8f73ed9c307b7e948ee2d.png" alt="image-20240629161711042"></p>
+<p><img src="https://pic.imgdb.cn/item/66a8f73ed9c307b7e948ee2d.png"></p>
 <h3 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h3><p><strong>消息规则配置表</strong></p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">CREATE TABLE `msg_configuration` (
   `id` varchar(36) NOT NULL COMMENT '主键',
@@ -564,7 +564,7 @@
 <li>具体策略类SmsNoticeExchanger，负责短信消息的发送</li>
 <li>环境类NoticeServiceImpl，维护一个策略对象的引用集合，负责将消息发送请求委派给具体的策略对象执行</li>
 </ul>
-<h4 id=""><a href="#" class="headerlink" title=""></a><img src="https://pic.imgdb.cn/item/66a8f760d9c307b7e94914f6.png" alt="image-20240701111707603"></h4><h4 id="抽象策略类NoticeExchanger"><a href="#抽象策略类NoticeExchanger" class="headerlink" title="抽象策略类NoticeExchanger"></a>抽象策略类NoticeExchanger</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">NoticeExchanger</span> <span class="token punctuation">{</span>
+<h4 id=""><a href="#" class="headerlink" title=""></a><img src="https://pic.imgdb.cn/item/66a8f760d9c307b7e94914f6.png"></h4><h4 id="抽象策略类NoticeExchanger"><a href="#抽象策略类NoticeExchanger" class="headerlink" title="抽象策略类NoticeExchanger"></a>抽象策略类NoticeExchanger</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">NoticeExchanger</span> <span class="token punctuation">{</span>
 
     <span class="token annotation punctuation">@Resource</span>
     <span class="token keyword">private</span> <span class="token class-name">MsgSendRecordService</span> msgSendRecordService<span class="token punctuation">;</span>

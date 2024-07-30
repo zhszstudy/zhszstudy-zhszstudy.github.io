@@ -380,7 +380,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新:&nbsp;&nbsp;
-                    2024-02-25
+                    2024-07-30
                 </div>
                 
 
@@ -418,7 +418,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>本人前端不是特别熟，今天在弄一个弹窗表格功能时，发现只要点开某一行数据的弹窗再关闭，再点击其他弹窗时，发现最大数量都会以第一次为准，不是以当前数据行的为准。</p>
-<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>①点开第三行弹窗显示，最大需求数量为5000<br><img src="https://pic.imgdb.cn/item/65dae0db9f345e8d032744f1.png" alt="在这里插入图片描述"><br>②接着点开第二行的数据，看着没啥问题<br><img src="https://pic.imgdb.cn/item/65dae0db9f345e8d032744a0.png" alt="在这里插入图片描述"><br>但是手动在30000后面再输多几个0会发现变成了5000，但是我弹框中的最大值还是30000，怎么就变成了5000呢<br><img src="https://pic.imgdb.cn/item/65dae0db9f345e8d0327456c.png" alt="在这里插入图片描述"></p>
+<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>①点开第三行弹窗显示，最大需求数量为5000<br><img src="https://pic.imgdb.cn/item/65dae0db9f345e8d032744f1.png"><br>②接着点开第二行的数据，看着没啥问题<br><img src="https://pic.imgdb.cn/item/65dae0db9f345e8d032744a0.png"><br>但是手动在30000后面再输多几个0会发现变成了5000，但是我弹框中的最大值还是30000，怎么就变成了5000呢<br><img src="https://pic.imgdb.cn/item/65dae0db9f345e8d0327456c.png"></p>
 <h2 id="弹窗部分代码："><a href="#弹窗部分代码：" class="headerlink" title="弹窗部分代码："></a>弹窗部分代码：</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token operator">&lt;</span>el<span class="token operator">-</span>dialog title<span class="token operator">=</span><span class="token string">"明细"</span> <span class="token operator">:</span>visible<span class="token punctuation">.</span>sync<span class="token operator">=</span><span class="token string">"dialogVisible"</span> width<span class="token operator">=</span><span class="token string">"1200px"</span> append<span class="token operator">-</span><span class="token keyword">to</span><span class="token operator">-</span>body<span class="token operator">&gt;</span>
       <span class="token operator">&lt;</span>el<span class="token operator">-</span>table ref<span class="token operator">=</span><span class="token string">"tableRef"</span> <span class="token operator">:</span>data<span class="token operator">=</span><span class="token string">"tableData"</span> fit highlight<span class="token operator">-</span>current<span class="token operator">-</span>row <span class="token operator">:</span>header<span class="token operator">-</span>cell<span class="token operator">-</span>style<span class="token operator">=</span><span class="token string">"headerCellStyle"</span> max<span class="token operator">-</span>height<span class="token operator">=</span><span class="token string">"350"</span><span class="token operator">&gt;</span>
         <span class="token operator">&lt;</span>el<span class="token operator">-</span>table<span class="token operator">-</span>column

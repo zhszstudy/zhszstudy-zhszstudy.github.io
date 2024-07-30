@@ -451,7 +451,7 @@
 <li>RouteLocator，用于把RouteDefinition转换成真正的Route对象。</li>
 </ul>
 <h4 id="RouteDefinitionLocator接口"><a href="#RouteDefinitionLocator接口" class="headerlink" title="RouteDefinitionLocator接口"></a>RouteDefinitionLocator接口</h4><p>主要有以下的实现类，该接口主要用来获取路由定义信息，比如上面yml配置文件的路由信息</p>
-<p><img src="https://pic.imgdb.cn/item/66a7b9e8d9c307b7e953c5ef.png" alt="image-20240605164102573"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7b9e8d9c307b7e953c5ef.png"></p>
 <h4 id="PropertiesRouteDefinitionLocator类"><a href="#PropertiesRouteDefinitionLocator类" class="headerlink" title="PropertiesRouteDefinitionLocator类"></a>PropertiesRouteDefinitionLocator类</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PropertiesRouteDefinitionLocator</span> <span class="token keyword">implements</span> <span class="token class-name">RouteDefinitionLocator</span> <span class="token punctuation">{</span>
 
 	<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">GatewayProperties</span> properties<span class="token punctuation">;</span>
@@ -471,7 +471,7 @@
 <h4 id="DiscoveryClientRouteDefinitionLocator"><a href="#DiscoveryClientRouteDefinitionLocator" class="headerlink" title="DiscoveryClientRouteDefinitionLocator"></a>DiscoveryClientRouteDefinitionLocator</h4><p><strong>spring.cloud.gateway.discovery.locator.enabled=true为ture时会装配该Bean</strong></p>
 <p>主要是从注册中心获取所有的服务列表，然后挨个加入Path断言以及去掉第一段路径的过滤器；比如某个服务名称为isrm-basic-provider，那么它会被该类发现，并加入Path断言’/isrm-basic-provider/**’和过滤器’’/isrm-basic-provider/(?<remaining>. *)’，当访问/isrm-basic-provider/user/get时会被拦截，有过滤器重写路径为/user/get，最终访问lb://isrm-basic-provider/user/get。</remaining></p>
 <p>如图，我并没有在配置文件配置相关路由信息，也可以经过网关访问basic服务的接口，因此可以通过DiscoveryClientRouteDefinitionLocator类发现注册的服务，然后添加默认的路由定义信息</p>
-<p><img src="https://pic.imgdb.cn/item/66a7ba09d9c307b7e953e1bf.png" alt="image-20240605171719960"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7ba09d9c307b7e953e1bf.png"></p>
 <h4 id="InMemoryRouteDefinitionRepository"><a href="#InMemoryRouteDefinitionRepository" class="headerlink" title="InMemoryRouteDefinitionRepository"></a>InMemoryRouteDefinitionRepository</h4><p>主要提供了对路由定义信息的增加、删除、查询方法，由一个LinkedHashMap变量存储，并包装成线程安全的SynchronizedMap</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">InMemoryRouteDefinitionRepository</span> <span class="token keyword">implements</span> <span class="token class-name">RouteDefinitionRepository</span> <span class="token punctuation">{</span>
 
@@ -631,7 +631,7 @@
 
 
 <h4 id="RouteLocator接口"><a href="#RouteLocator接口" class="headerlink" title="RouteLocator接口"></a>RouteLocator接口</h4><p>主要有以下实现类，该接口主要用于把<code>RouteDefinition</code>路由定义信息对象转换成真实的<code>Route</code>路由对象。</p>
-<p><img src="https://pic.imgdb.cn/item/66a7ba2dd9c307b7e954057a.png" alt="image-20240608112958821"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7ba2dd9c307b7e954057a.png"></p>
 <h4 id="Route类"><a href="#Route类" class="headerlink" title="Route类"></a>Route类</h4><p><strong>部分代码</strong></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Route</span> <span class="token keyword">implements</span> <span class="token class-name">Ordered</span> <span class="token punctuation">{</span>
 
@@ -823,7 +823,7 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>因此，我们想要获取最新的路由信息，只需要发布一个RefreshRoutesEvent事件即可</p>
-<p><img src="https://pic.imgdb.cn/item/66a7ba7dd9c307b7e9544f3d.png" alt="image-20240612202910164"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7ba7dd9c307b7e9544f3d.png"></p>
 <h4 id="RouteRefreshListener类"><a href="#RouteRefreshListener类" class="headerlink" title="RouteRefreshListener类"></a>RouteRefreshListener类</h4><p>除了发布RefreshRoutesEvent事件可以获取最新路由信息之外，当Nacos配置中心发布新配置时，也会去重新获取路由信息</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RouteRefreshListener</span> <span class="token keyword">implements</span> <span class="token class-name">ApplicationListener</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">ApplicationEvent</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
 
@@ -905,25 +905,25 @@
 
 <p>因为我上面没有配置合同模块的路由定义信息，所以我在本地访问合同模块的查询接口时，会报下面的异常信息，找不到对应的路由</p>
 <p>‘Failed to handle request [POST <a target="_blank" rel="noopener" href="http://localhost:8081/api/contract/tContract/query]">http://localhost:8081/api/contract/tContract/query]</a>: 404 NOT_FOUND “No matching handler</p>
-<p><img src="https://pic.imgdb.cn/item/66a7ba95d9c307b7e9546839.png" alt="image-20240611164013143"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7ba95d9c307b7e9546839.png"></p>
 <p>在网关的配置文件加入合同模块的路由定义信息</p>
-<p><img src="https://pic.imgdb.cn/item/66a7baa8d9c307b7e9547955.png" alt="image-20240611164940406"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7baa8d9c307b7e9547955.png"></p>
 <p>此时点击发布按钮，配置中心的配置发生了变化，会发布一个<strong>RefreshScopeRefreshedEvent</strong>事件，<strong>RouteRefreshListener</strong>监听到这个事件会发布一个<strong>RefreshRoutesEvent</strong>事件</p>
-<p><img src="https://pic.imgdb.cn/item/66a7babad9c307b7e9548b77.png" alt="image-20240611165435671"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7babad9c307b7e9548b77.png"></p>
 <p>然后<strong>CachingRouteLocator</strong>类会监听<strong>RefreshRoutesEvent</strong>事件，接着调用<strong>CompositeRouteLocator</strong>类的方法</p>
-<p><img src="https://pic.imgdb.cn/item/66a7bacfd9c307b7e954a069.png" alt="image-20240611172422683"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7bacfd9c307b7e954a069.png"></p>
 <p><strong>CompositeRouteLocator</strong>类接着调用<strong>RouteDefinitionRouteLocator</strong>类的方法</p>
-<p><img src="https://pic.imgdb.cn/item/66a7bae4d9c307b7e954b486.png" alt="image-20240611172800773"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7bae4d9c307b7e954b486.png"></p>
 <p><strong>RouteDefinitionRouteLocator</strong>里面会调用<strong>CompositeRouteDefinitionLocator</strong>方法获取所有路由定义信息，并转换成真实的Route对象</p>
-<p><img src="https://pic.imgdb.cn/item/66a7bb0ed9c307b7e954daed.png" alt="image-20240611172921075"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7bb0ed9c307b7e954daed.png"></p>
 <p><strong>CompositeRouteDefinitionLocator</strong>依次会调用其他RouteDefinitionLocator实现类的方法获取路由定义信息</p>
-<p><img src="https://pic.imgdb.cn/item/66a7baf5d9c307b7e954c2ad.png" alt="image-20240611173109283"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7baf5d9c307b7e954c2ad.png"></p>
 <p><strong>PropertiesRouteDefinitionLocator</strong>类主要是获取配置文件定义的路由信息的，因为GatewayProperties被@ConfigurationProperties(“spring.cloud.gateway”)注解标注，所以它能获取最新的配置</p>
-<p><img src="https://pic.imgdb.cn/item/66a7bb2cd9c307b7e954f5b9.png" alt="image-20240611173403317"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7bb2cd9c307b7e954f5b9.png"></p>
 <p>刚刚加入的合同模块路由配置已经被读取到了，如下图，拿到这些信息就可以动态地去更新网关服务的路由信息了，不需要重启服务</p>
-<p><img src="https://pic.imgdb.cn/item/66a7bc34d9c307b7e955ca05.png" alt="image-20240611173744436"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7bc34d9c307b7e955ca05.png"></p>
 <p>此时我们再次访问合同模块的查询接口，可以发现我们已经可以成功访问到合同模块的接口了</p>
-<p><img src="https://pic.imgdb.cn/item/66a7bc4dd9c307b7e955db58.png" alt="image-20240611174025084"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7bc4dd9c307b7e955db58.png"></p>
 <h3 id="四、通过-Spring-Boot-Actuator实现动态路由"><a href="#四、通过-Spring-Boot-Actuator实现动态路由" class="headerlink" title="四、通过 Spring Boot Actuator实现动态路由"></a>四、通过 Spring Boot Actuator实现动态路由</h3><ul>
 <li><p><strong>利用 <code>GatewayControllerEndpoint</code> 端点暴露路由的 CRUD 操作接口。</strong></p>
 <ul>
@@ -1125,9 +1125,9 @@
 </li>
 </ul>
 <p>没在yml文件配置暴露所有端点访问获取所有路由信息节点会报错</p>
-<p><img src="https://pic.imgdb.cn/item/66a7bc98d9c307b7e9564880.png" alt="image-20240602151723373"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7bc98d9c307b7e9564880.png"></p>
 <p>配置了就不会报错了</p>
-<p><img src="https://pic.imgdb.cn/item/66a7bcadd9c307b7e9565ae9.png" alt="image-20240602151819257"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7bcadd9c307b7e9565ae9.png"></p>
 <h3 id="五、通过事件刷新机制自定义实现动态路由"><a href="#五、通过事件刷新机制自定义实现动态路由" class="headerlink" title="五、通过事件刷新机制自定义实现动态路由"></a>五、通过事件刷新机制自定义实现动态路由</h3><p>在第三点介绍的Nacos基于yml文件的配置就已经可以实现动态路由了，但是我想要将路由配置和该文件隔离，自定义实现动态路由，这样不仅可以集中化配置管理路由信息，也意味着你可以进行更多的自定义扩展操作，这取决于你的动态路由实现逻辑，比如可以实现根据特定条件动态加载或卸载路由规则。</p>
 <p>本文提供的例子，仅进行了路由信息的添加操作和动态刷新功能，可根据自己的需求，自定义实现其他扩展逻辑，代码如下：</p>
 <h4 id="GatewayRouteEventPublisherAware类"><a href="#GatewayRouteEventPublisherAware类" class="headerlink" title="GatewayRouteEventPublisherAware类"></a>GatewayRouteEventPublisherAware类</h4><p>提供动态路由的基础方法，可通过获取bean操作该类的方法，该类提供新增路由、更新路由、删除路由，然后实现发布的功能。</p>
@@ -1432,7 +1432,7 @@
 
 
 
-<h4 id="isrm-gateway配置文件"><a href="#isrm-gateway配置文件" class="headerlink" title="isrm-gateway配置文件"></a>isrm-gateway配置文件</h4><p><img src="https://pic.imgdb.cn/item/66a7bcd3d9c307b7e9567ae0.png" alt="image-20240612172043112"></p>
+<h4 id="isrm-gateway配置文件"><a href="#isrm-gateway配置文件" class="headerlink" title="isrm-gateway配置文件"></a>isrm-gateway配置文件</h4><p><img src="https://pic.imgdb.cn/item/66a7bcd3d9c307b7e9567ae0.png"></p>
 <p>比如现在配置如下：</p>
 <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
@@ -1524,16 +1524,16 @@
 
 
 <h4 id="初始化流程"><a href="#初始化流程" class="headerlink" title="初始化流程"></a>初始化流程</h4><p>启动网关服务，NacosRouteListener初始化时获取路由定义信息</p>
-<p><img src="https://pic.imgdb.cn/item/66a7bcf0d9c307b7e956982a.png" alt="image-20240612172846172"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7bcf0d9c307b7e956982a.png"></p>
 <p>遍历路由定义信息列表，调用GatewayRouteEventPublisherAware新增路由定义信息到InMemoryRouteDefinitionRepository中，同时发布RefreshRoutesEvent事件</p>
 <p><img src="https://pic.imgdb.cn/item/66a7bba6d9c307b7e9555d40.png"></p>
 <p>CachingRouteLocator监听RefreshRoutesEvent事件，调用CompositeRouteLocator的getRoutes方法，然后由RouteDefinitionRouteLocator再去调用CompositeRouteDefinitionLocator的getRouteDefinitions方法获取所有的定义信息，然后转换成真实的路由对象</p>
-<p><img src="https://pic.imgdb.cn/item/66a7bd1dd9c307b7e956bb1c.png" alt="image-20240612173311712"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7bd1dd9c307b7e956bb1c.png"></p>
 <p>因为CompositeRouteDefinitionLocator持有了InMemoryRouteDefinitionRepository的引用，所以它能获取我们自定义维护的路由定义信息</p>
-<p><img src="D:\blog\zhszstudy\source_posts\SprringCloud-Gateway动态添加路由不重启.assets\image-20240612173527286.png" alt="image-20240612173527286"></p>
+<p><img src="https://pic.imgdb.cn/item/66a8fd79d9c307b7e94ee22e.png"></p>
 <p>到此，我们初始化路由配置完成</p>
 <h4 id="监听流程"><a href="#监听流程" class="headerlink" title="监听流程"></a>监听流程</h4><p>因为上面的配置文件中没有合同模块的路由配置，所以调用合同模块的查询接口会报下面的错误</p>
-<p><img src="https://pic.imgdb.cn/item/66a7bd44d9c307b7e956e253.png" alt="image-20240612174233475"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7bd44d9c307b7e956e253.png"></p>
 <p>当我们在原有的配置文件基础上，新增合同模块的路由配置，然后点击发布按钮</p>
 <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
@@ -1644,9 +1644,9 @@
 <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>此时NacosRouteRefreshListener就能监听到配置文件的配置变化，重新调用GatewayRouteEventPublisherAware类的方法，重新加载新的路由，流程和初始化流程差不多就不讲了</p>
-<p><img src="https://pic.imgdb.cn/item/66a7bd59d9c307b7e956f8f2.pngg" alt="image-20240612174639334"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7bd59d9c307b7e956f8f2.pngg"></p>
 <p>重新调用合同模块的查询接口，发现数据出来了，接口没有报错，到此动态路由功能实现了，无需重启网关服务</p>
-<p><img src="https://pic.imgdb.cn/item/66a7bd6ad9c307b7e9570a06.png" alt="image-20240612175011638"></p>
+<p><img src="https://pic.imgdb.cn/item/66a7bd6ad9c307b7e9570a06.png"></p>
 
                 
             </div>
