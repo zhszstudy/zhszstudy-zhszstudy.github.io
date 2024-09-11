@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="feign调用接口成功后直接进入fallback回调方法排查, zhou22">
-    <meta name="description" content="前言：昨天下午有个需求需要写个远程调用接口获取文件的上传日期，但是我在客户端调用远程接口成功后并没有拿到数据，调试发现调用接口成功后直接进入了fallback回到方法，返回了null代码：①feign接口
-@FeignClient(name">
+    <meta name="description" content="前言：最近写了个远程调用接口获取文件的上传日期，但是在客户端调用远程接口成功后并没有拿到数据，调试发现调用接口成功后直接进入了fallback回到方法，返回了null代码：①feign接口
+@FeignClient(name = &#34;isrm">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -344,12 +344,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/bug%E6%8E%92%E6%9F%A5/">
-                                <span class="chip bg-color">bug排查</span>
-                            </a>
-                        
                             <a href="/tags/springcloud/">
                                 <span class="chip bg-color">springcloud</span>
+                            </a>
+                        
+                            <a href="/tags/bug%E6%8E%92%E6%9F%A5/">
+                                <span class="chip bg-color">bug排查</span>
                             </a>
                         
                     </div>
@@ -380,7 +380,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新:&nbsp;&nbsp;
-                    2024-02-18
+                    2024-09-11
                 </div>
                 
 
@@ -417,7 +417,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>昨天下午有个需求需要写个远程调用接口获取文件的上传日期，但是我在客户端调用远程接口成功后并没有拿到数据，调试发现调用接口成功后直接进入了fallback回到方法，返回了null<br><strong>代码：</strong><br>①feign接口</p>
+                <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>最近写了个远程调用接口获取文件的上传日期，但是在客户端调用远程接口成功后并没有拿到数据，调试发现调用接口成功后直接进入了fallback回到方法，返回了null<br><strong>代码：</strong><br>①feign接口</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"isrm-attachment"</span><span class="token punctuation">,</span> fallback <span class="token operator">=</span> <span class="token class-name">OssBusinessRemoteServiceImpl</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">interface</span>  <span class="token class-name">OssBusinessRemoteService</span> <span class="token punctuation">{</span>
     <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/ossBusiness/listByBusinessIds"</span><span class="token punctuation">)</span>
@@ -819,12 +819,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/bug%E6%8E%92%E6%9F%A5/">
-                                    <span class="chip bg-color">bug排查</span>
-                                </a>
-                            
                                 <a href="/tags/springcloud/">
                                     <span class="chip bg-color">springcloud</span>
+                                </a>
+                            
+                                <a href="/tags/bug%E6%8E%92%E6%9F%A5/">
+                                    <span class="chip bg-color">bug排查</span>
                                 </a>
                             
                         </div>
@@ -1199,7 +1199,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">25.3k</span>
+                        class="white-color">24.7k</span>
             
             
             

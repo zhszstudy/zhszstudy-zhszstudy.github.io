@@ -519,8 +519,8 @@
                             <div class="title center-align">feign调用接口成功后直接进入fallback回调方法排查</div>
                             <div class="description center-align">
                                 
-                                    前言：昨天下午有个需求需要写个远程调用接口获取文件的上传日期，但是我在客户端调用远程接口成功后并没有拿到数据，调试发现调用接口成功后直接进入了fallback回到方法，返回了null代码：①feign接口
-@FeignClient(name
+                                    前言：最近写了个远程调用接口获取文件的上传日期，但是在客户端调用远程接口成功后并没有拿到数据，调试发现调用接口成功后直接进入了fallback回到方法，返回了null代码：①feign接口
+@FeignClient(name = "isrm
                                 
                             </div>
                             <div class="cover-btns">
@@ -689,7 +689,7 @@
                 </a>
                 <p class="post-description">
                     
-                        前言：昨天下午有个需求需要写个远程调用接口获取文件的上传日期，但是我在客户端调用远程接口成功后并没有拿到数据，调试发现调用接口成功后直接进入
+                        前言：最近写了个远程调用接口获取文件的上传日期，但是在客户端调用远程接口成功后并没有拿到数据，调试发现调用接口成功后直接进入了fallbac
                     
                 </p>
                 <a href="/2023/12/23/feign-diao-yong-jie-kou-cheng-gong-hou-zhi-jie-jin-ru-fallback-hui-diao-fang-fa-pai-cha/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
@@ -833,8 +833,9 @@
                         <div class="summary block-with-text">
                             
                                 前言：系统有多个jar包需要更新部署，如果每次都要手动敲java -jar的话，并且还要指定生成环境还是测试环境，这样就显得很麻烦，为此提供一个脚本如下，可根据自己的需求自定义该脚本：
-srmBackApplication.sh
-#! /b
+application.sh
+#! /bin/sh
+#
                             
                         </div>
                         <div class="publish-info">
@@ -886,7 +887,7 @@ srmBackApplication.sh
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                前言系统有一个需求就是采购员审批注册供应商的信息时，会生成一个供应商的账号，此时需要发送供应商的账号信息（账号、密码）到注册填写的邮箱中，通知供应商账号信息，当时很快就写好了一个工具类，用来发送普通的文本邮件信息。但是随着系统的迭代，后面又
+                                前言系统有一个需求就是采购员审批注册供应商的信息时，会生成一个供应商的账号，此时需要发送供应商的账号信息（账号、密码）到注册填写的邮箱中，通知供应商账号信息。因此在原有的短信发送工具类加上邮件发送的逻辑，用来发送普通的文本邮件信息。但是随着
                             
                         </div>
                         <div class="publish-info">
@@ -1116,7 +1117,7 @@ srmBackApplication.sh
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">25.3k</span>
+                        class="white-color">24.7k</span>
             
             
             

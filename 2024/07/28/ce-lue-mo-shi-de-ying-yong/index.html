@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="策略模式的应用, zhou22">
-    <meta name="description" content="前言系统有一个需求就是采购员审批注册供应商的信息时，会生成一个供应商的账号，此时需要发送供应商的账号信息（账号、密码）到注册填写的邮箱中，通知供应商账号信息，当时很快就写好了一个工具类，用来发送普通的文本邮件信息。但是随着系统的迭代，后面又">
+    <meta name="description" content="前言系统有一个需求就是采购员审批注册供应商的信息时，会生成一个供应商的账号，此时需要发送供应商的账号信息（账号、密码）到注册填写的邮箱中，通知供应商账号信息。因此在原有的短信发送工具类加上邮件发送的逻辑，用来发送普通的文本邮件信息。但是随着">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -379,14 +379,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新:&nbsp;&nbsp;
-                    2024-07-30
+                    2024-09-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;&nbsp;
-                    4.2k
+                    4.1k
                 </div>
                 
 
@@ -416,8 +416,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>系统有一个需求就是采购员审批注册供应商的信息时，会生成一个供应商的账号，此时需要发送供应商的账号信息（账号、密码）到注册填写的邮箱中，通知供应商账号信息，当时很快就写好了一个工具类，用来发送普通的文本邮件信息。但是随着系统的迭代，后面又新增了一些需求，比如一些单据需要在供应商确认时，发送一条站内信到首页，这样采购员登录时就可以看到最新的单据信息，进行相应的处理；或者采购员创建一些单据时，需要发送站内信到首页，然后供应商登录系统时，可以看到最新单据信息并进行处理，因此，我在原有的工具类基础上，修改发送邮件信息的方法，加入了消息类型参数，并根据消息类型，调用相应的方法处理；过了一段时间，业务又找了过来，说当用户修改密码时，需要发送一个短信验证码，验证码输对了才给他修改，接着我又在工具类里面，加入了处理短信的发送逻辑。</p>
-<p>伪代码如下：</p>
+                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>系统有一个需求就是采购员审批注册供应商的信息时，会生成一个供应商的账号，此时需要发送供应商的账号信息（账号、密码）到注册填写的邮箱中，通知供应商账号信息。因此在原有的短信发送工具类加上邮件发送的逻辑，用来发送普通的文本邮件信息。但是随着系统的迭代，后面又新增了一些需求，比如一些单据需要在供应商确认时，发送一条站内信到首页，这样采购员登录时就可以看到最新的单据信息，进行相应的处理；或者采购员创建一些单据时，需要发送站内信到首页，然后供应商登录系统时，可以看到最新单据信息并进行处理，因此，在原有的工具类基础上，修改发送信息的方法，加入了站内信的处理逻辑。</p>
+<p><strong>伪代码如下：</strong></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NoticeSendUtils</span> <span class="token punctuation">{</span>
     <span class="token comment">// 省略其他配置</span>
@@ -490,12 +490,8 @@
 <li>短信模板编码由阿里云短信服务提供</li>
 <li>调用者的参数字段名称需要和模板内容的${}表达式中的名称一致（使用了freemarker进行模板渲染）</li>
 </ul>
-<p><img src="https://pic.imgdb.cn/item/66a8f718d9c307b7e948c890.png"></p>
-<h4 id="消息发送记录"><a href="#消息发送记录" class="headerlink" title="消息发送记录"></a>消息发送记录</h4><p>主要查看消息有没有发送成功</p>
-<p><img src="https://pic.imgdb.cn/item/66a8f729d9c307b7e948d917.png"></p>
-<h4 id="消息接收中心"><a href="#消息接收中心" class="headerlink" title="消息接收中心"></a>消息接收中心</h4><p>主要显示站内信发送情况</p>
-<p><img src="https://pic.imgdb.cn/item/66a8f73ed9c307b7e948ee2d.png"></p>
-<h3 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h3><p><strong>消息规则配置表</strong></p>
+<p><img src="https://pic.imgdb.cn/item/66e187d7d9c307b7e91a3320.png"></p>
+<p><strong>消息规则配置表</strong></p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">CREATE TABLE `msg_configuration` (
   `id` varchar(36) NOT NULL COMMENT '主键',
   `code` varchar(255) DEFAULT NULL COMMENT '编码',
@@ -1473,7 +1469,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">25.3k</span>
+                        class="white-color">24.7k</span>
             
             
             

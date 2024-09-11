@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Dockerfile和jar包不同目录处理, zhou22">
-    <meta name="description" content="如果Dockerfile的全路径为**/srm/myDockerfile/Dockerfile**，而JAR文件位于/srm目录下，你可以在Dockerfile中使用相对路径引用JAR文件。以下是如何编写Dockerfile的示例：假设你的">
+    <meta name="description" content="如果Dockerfile的全路径为**/srm/myDockerfile/Dockerfile**，而JAR文件位于/srm目录下，可以在Dockerfile中使用相对路径引用JAR文件。假设项目结构如下：
+luaCopy code
+/sr">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -375,14 +377,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新:&nbsp;&nbsp;
-                    2024-02-21
+                    2024-09-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;&nbsp;
-                    375
+                    275
                 </div>
                 
 
@@ -412,7 +414,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>如果Dockerfile的全路径为**/srm/myDockerfile/Dockerfile**，而JAR文件位于/srm目录下，你可以在Dockerfile中使用相对路径引用JAR文件。以下是如何编写Dockerfile的示例：<br>假设你的项目结构如下：</p>
+                <p>如果Dockerfile的全路径为**/srm/myDockerfile/Dockerfile**，而JAR文件位于/srm目录下，可以在Dockerfile中使用相对路径引用JAR文件。<br>假设项目结构如下：</p>
 <pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">luaCopy code
 <span class="token operator">/</span>srm
 <span class="token punctuation">|</span><span class="token operator">--</span> myDockerfile
@@ -433,18 +435,12 @@ WORKDIR <span class="token operator">/</span>srm/myDockerfile
 <span class="token comment"># 启动应用程序</span>
 CMD <span class="token punctuation">[</span><span class="token string">"java"</span><span class="token punctuation">,</span> <span class="token string">"-jar"</span><span class="token punctuation">,</span> <span class="token string">"your-app.jar"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>在这个Dockerfile中，工作目录被设置为/srm/myDockerfile，即Dockerfile所在的目录。然后，使用<strong>COPY</strong>命令通过<strong>相对路径../../引用</strong>上级目录来复制JAR文件到容器内的工作目录。<br>接下来，你可以按照之前的步骤使用Docker构建镜像和运行容器：</p>
-<ol>
-<li>在宿主机的/srm目录中，打开终端。</li>
-<li>使用以下命令构建Docker镜像（将镜像命名为<strong>my-app-image</strong>，可以根据需要进行更改）：</li>
-</ol>
+<p>在这个Dockerfile中，工作目录被设置为/srm/myDockerfile，即Dockerfile所在的目录。然后，使用<strong>COPY</strong>命令通过<strong>相对路径../../引用</strong>上级目录来复制JAR文件到容器内的工作目录。<br>可以下命令构建Docker镜像（将镜像命名为<strong>my-app-image</strong>，可以根据需要进行更改）：</p>
 <pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">bashCopy code
 docker build <span class="token operator">-</span>t my-app-image <span class="token operator">-</span>f myDockerfile/Dockerfile <span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ol>
-<li>使用以下命令运行容器：<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">bashCopy code
+<p>使用以下命令运行容器：</p>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">bashCopy code
 docker run <span class="token operator">-</span>p 8080:8080 my-app-image<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-这将在容器中启动你的Java应用程序，可以通过localhost:8080访问它。确保根据你的应用程序的实际需求修改Dockerfile和Docker运行命令。</li>
-</ol>
 
                 
             </div>
@@ -873,7 +869,7 @@ docker run <span class="token operator">-</span>p 8080:8080 my-app-image<span ar
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">25.3k</span>
+                        class="white-color">24.7k</span>
             
             
             

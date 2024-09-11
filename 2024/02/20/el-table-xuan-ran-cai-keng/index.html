@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="el-table渲染踩坑, zhou22">
-    <meta name="description" content="前言：本人前端不是特别熟，今天在弄一个弹窗表格功能时，发现只要点开某一行数据的弹窗再关闭，再点击其他弹窗时，发现最大数量都会以第一次为准，不是以当前数据行的为准。
-问题：①点开第三行弹窗显示，最大需求数量为5000②接着点开第二行的数据，看">
+    <meta name="description" content="前言：今天在弄一个弹窗表格功能时，发现只要点开某一行数据的弹窗再关闭，再点击其他弹窗时，发现最大数量都会以第一次为准，不是以当前数据行的为准。
+弹窗部分代码：&amp;lt;el-dialog title=&#34;明细&#34; :visible.sync=&#34;d">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -380,21 +380,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新:&nbsp;&nbsp;
-                    2024-07-30
+                    2024-09-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;&nbsp;
-                    580
+                    379
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -417,8 +417,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>本人前端不是特别熟，今天在弄一个弹窗表格功能时，发现只要点开某一行数据的弹窗再关闭，再点击其他弹窗时，发现最大数量都会以第一次为准，不是以当前数据行的为准。</p>
-<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><p>①点开第三行弹窗显示，最大需求数量为5000<br><img src="https://pic.imgdb.cn/item/65dae0db9f345e8d032744f1.png"><br>②接着点开第二行的数据，看着没啥问题<br><img src="https://pic.imgdb.cn/item/65dae0db9f345e8d032744a0.png"><br>但是手动在30000后面再输多几个0会发现变成了5000，但是我弹框中的最大值还是30000，怎么就变成了5000呢<br><img src="https://pic.imgdb.cn/item/65dae0db9f345e8d0327456c.png"></p>
+                <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>今天在弄一个弹窗表格功能时，发现只要点开某一行数据的弹窗再关闭，再点击其他弹窗时，发现最大数量都会以第一次为准，不是以当前数据行的为准。</p>
 <h2 id="弹窗部分代码："><a href="#弹窗部分代码：" class="headerlink" title="弹窗部分代码："></a>弹窗部分代码：</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token operator">&lt;</span>el<span class="token operator">-</span>dialog title<span class="token operator">=</span><span class="token string">"明细"</span> <span class="token operator">:</span>visible<span class="token punctuation">.</span>sync<span class="token operator">=</span><span class="token string">"dialogVisible"</span> width<span class="token operator">=</span><span class="token string">"1200px"</span> append<span class="token operator">-</span><span class="token keyword">to</span><span class="token operator">-</span>body<span class="token operator">&gt;</span>
       <span class="token operator">&lt;</span>el<span class="token operator">-</span>table ref<span class="token operator">=</span><span class="token string">"tableRef"</span> <span class="token operator">:</span>data<span class="token operator">=</span><span class="token string">"tableData"</span> fit highlight<span class="token operator">-</span>current<span class="token operator">-</span>row <span class="token operator">:</span>header<span class="token operator">-</span>cell<span class="token operator">-</span>style<span class="token operator">=</span><span class="token string">"headerCellStyle"</span> max<span class="token operator">-</span>height<span class="token operator">=</span><span class="token string">"350"</span><span class="token operator">&gt;</span>
         <span class="token operator">&lt;</span>el<span class="token operator">-</span>table<span class="token operator">-</span>column
@@ -447,35 +446,11 @@
         <span class="token operator">&lt;</span>el<span class="token operator">-</span>button v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">"isEdit"</span> type<span class="token operator">=</span><span class="token string">"primary"</span> <span class="token annotation punctuation">@click</span><span class="token operator">=</span><span class="token string">"saveList"</span><span class="token operator">&gt;</span>确 定<span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>button<span class="token operator">&gt;</span>
       <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
     <span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>dialog<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="解决："><a href="#解决：" class="headerlink" title="解决："></a>解决：</h2><p>搞了一上午，可算在网上翻到了<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33859231/article/details/91976530">解决方案</a>，需要在el-table中加一个唯一key来解决这个渲染问题，这个key是vue自带属性,主要用在 Vue 的虚拟 DOM比对算法中，在新旧nodes对比时辨识 VNodes。如果不更新这个key的话,显示隐藏列的时候,部分DOM不会重新渲染；因此我将每一行的行号作为key解决了这个问题！</p>
+<h2 id="解决："><a href="#解决：" class="headerlink" title="解决："></a>解决：</h2><p>在网上翻到了<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33859231/article/details/91976530">解决方案</a>，需要在el-table中加一个唯一key来解决这个渲染问题，这个key是vue自带属性,主要用在 Vue 的虚拟 DOM比对算法中，在新旧nodes对比时辨识 VNodes。如果不更新这个key的话,显示隐藏列的时候,部分DOM不会重新渲染；因此我将每一行的行号作为key解决了这个问题！</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token operator">&lt;</span>el<span class="token operator">-</span>dialog title<span class="token operator">=</span><span class="token string">"明细"</span> <span class="token operator">:</span>visible<span class="token punctuation">.</span>sync<span class="token operator">=</span><span class="token string">"dialogVisible"</span> width<span class="token operator">=</span><span class="token string">"1200px"</span> append<span class="token operator">-</span><span class="token keyword">to</span><span class="token operator">-</span>body<span class="token operator">&gt;</span>
       <span class="token operator">&lt;</span>el<span class="token operator">-</span>table ref<span class="token operator">=</span><span class="token string">"tableRef"</span> <span class="token operator">:</span>key<span class="token operator">=</span><span class="token string">"currentRow.rowNo"</span> <span class="token operator">:</span>data<span class="token operator">=</span><span class="token string">"tableData"</span> fit highlight<span class="token operator">-</span>current<span class="token operator">-</span>row <span class="token operator">:</span>header<span class="token operator">-</span>cell<span class="token operator">-</span>style<span class="token operator">=</span><span class="token string">"headerCellStyle"</span> max<span class="token operator">-</span>height<span class="token operator">=</span><span class="token string">"350"</span><span class="token operator">&gt;</span>
-        <span class="token operator">&lt;</span>el<span class="token operator">-</span>table<span class="token operator">-</span>column
-          label<span class="token operator">=</span><span class="token string">"需求数量"</span>
-          prop<span class="token operator">=</span><span class="token string">"quantity"</span>
-          align<span class="token operator">=</span><span class="token string">"center"</span>
-          min<span class="token operator">-</span>width<span class="token operator">=</span><span class="token string">"130px"</span>
-          <span class="token operator">:</span>render<span class="token operator">-</span>header<span class="token operator">=</span><span class="token string">"addRedStar"</span>
-          show<span class="token operator">-</span>overflow<span class="token operator">-</span>tooltip
-          fixed<span class="token operator">=</span><span class="token string">"left"</span>
-        <span class="token operator">&gt;</span>
-          <span class="token operator">&lt;</span>template #<span class="token keyword">default</span><span class="token operator">=</span><span class="token string">"{ row }"</span><span class="token operator">&gt;</span>
-            <span class="token operator">&lt;</span>el<span class="token operator">-</span>input
-              v<span class="token operator">-</span>model<span class="token operator">=</span><span class="token string">"row.quantity"</span>
-              v<span class="token operator">-</span>only<span class="token operator">-</span>number<span class="token operator">=</span><span class="token string">"{ precision: 2, max: row.maxQuantity }"</span>
-              type<span class="token operator">=</span><span class="token string">"number"</span>
-              <span class="token operator">:</span>disabled<span class="token operator">=</span><span class="token string">"!isEdit"</span>
-              <span class="token operator">:</span><span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"{ 'negative-number-color': formInfo.orderMode === 'Z010' }"</span>
-            <span class="token operator">/</span><span class="token operator">&gt;</span>
-            <span class="token punctuation">{</span><span class="token punctuation">{</span> row<span class="token punctuation">.</span>maxQuantity <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token punctuation">{</span> row<span class="token punctuation">.</span>quantity <span class="token punctuation">}</span><span class="token punctuation">}</span>
-          <span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>table<span class="token operator">-</span>column<span class="token operator">&gt;</span>
-      <span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>table<span class="token operator">&gt;</span>
-      <span class="token operator">&lt;</span>span slot<span class="token operator">=</span><span class="token string">"footer"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"dialog-footer"</span><span class="token operator">&gt;</span>
-        <span class="token operator">&lt;</span>el<span class="token operator">-</span>button <span class="token annotation punctuation">@click</span><span class="token operator">=</span><span class="token string">"dialogVisible = false"</span><span class="token operator">&gt;</span>取 消<span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>button<span class="token operator">&gt;</span>
-        <span class="token operator">&lt;</span>el<span class="token operator">-</span>button v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">"isEdit"</span> type<span class="token operator">=</span><span class="token string">"primary"</span> <span class="token annotation punctuation">@click</span><span class="token operator">=</span><span class="token string">"saveList"</span><span class="token operator">&gt;</span>确 定<span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>button<span class="token operator">&gt;</span>
-      <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>dialog<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+       <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>省略代码
+    <span class="token operator">&lt;</span><span class="token operator">/</span>el<span class="token operator">-</span>dialog<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -911,7 +886,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">25.3k</span>
+                        class="white-color">24.7k</span>
             
             
             

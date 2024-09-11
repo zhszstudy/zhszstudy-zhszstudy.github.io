@@ -6,8 +6,9 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Linux部署多个jar包脚本, zhou22">
     <meta name="description" content="前言：系统有多个jar包需要更新部署，如果每次都要手动敲java -jar的话，并且还要指定生成环境还是测试环境，这样就显得很麻烦，为此提供一个脚本如下，可根据自己的需求自定义该脚本：
-srmBackApplication.sh
-#! /b">
+application.sh
+#! /bin/sh
+#">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -381,21 +382,21 @@ srmBackApplication.sh
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新:&nbsp;&nbsp;
-                    2024-07-30
+                    2024-09-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>字数:&nbsp;&nbsp;
-                    821
+                    680
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    3 分
                 </div>
                 
 
@@ -419,22 +420,22 @@ srmBackApplication.sh
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>前言：</strong><br>系统有多个jar包需要更新部署，如果每次都要手动敲java -jar的话，并且还要指定生成环境还是测试环境，这样就显得很麻烦，为此提供一个脚本如下，可根据自己的需求自定义该脚本：</p>
-<p><strong>srmBackApplication.sh</strong></p>
+<p><strong>application.sh</strong></p>
 <pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment">#! /bin/sh</span>
 <span class="token comment"># 端口号</span>
-PORTS=<span class="token punctuation">(</span>8081 11113 19021 11119 18011 19013 19008 18888 11114 11116 11110 19012 21114 18021<span class="token punctuation">)</span>
+PORTS=<span class="token punctuation">(</span>8081 11113<span class="token punctuation">)</span>
 <span class="token comment"># 模块</span>
-MODULES=<span class="token punctuation">(</span>isrm-gateway isrm-system isrm-attachment isrm-auth isrm-basic isrm-bid isrm-notice isrm-job isrm-per isrm-pur isrm-report isrm-sup isrm-<span class="token keyword">workflow</span> isrm-contract<span class="token punctuation">)</span>
+MODULES=<span class="token punctuation">(</span>gateway system<span class="token punctuation">)</span>
 <span class="token comment"># 模块名称</span>
-MODULE_NAMES=<span class="token punctuation">(</span>网关 系统服务  文件管理  授权管理 基础服务 采购池管理 消息中心 任务调度 供应商评价 采购执行 报表管理 供应商管理 工作流 合同管理<span class="token punctuation">)</span>
+MODULE_NAMES=<span class="token punctuation">(</span>网关 系统服务<span class="token punctuation">)</span>
 <span class="token comment"># jar包数组</span>
-JARS=<span class="token punctuation">(</span>isrm-gateway<span class="token punctuation">.</span>jar isrm-system<span class="token punctuation">.</span>jar isrm-attachment<span class="token punctuation">.</span>jar isrm-auth<span class="token punctuation">.</span>jar isrm-basic<span class="token punctuation">.</span>jar isrm-bid<span class="token punctuation">.</span>jar isrm-notice<span class="token punctuation">.</span>jar isrm-job<span class="token punctuation">.</span>jar isrm-per<span class="token punctuation">.</span>jar isrm-pur<span class="token punctuation">.</span>jar isrm-report<span class="token punctuation">.</span>jar isrm-sup<span class="token punctuation">.</span>jar isrm-<span class="token keyword">workflow</span><span class="token punctuation">.</span>jar isrm-contract<span class="token punctuation">.</span>jar<span class="token punctuation">)</span>
+JARS=<span class="token punctuation">(</span>gateway<span class="token punctuation">.</span>jar system<span class="token punctuation">.</span>jar<span class="token punctuation">)</span>
 <span class="token comment"># 服务运行内存</span>
-XMX=<span class="token punctuation">(</span>256m 256m 256m 256m 256m 512m 256m 256m 512m 512m 512m 256m 256m 512m<span class="token punctuation">)</span>
+XMX=<span class="token punctuation">(</span>256m 256m<span class="token punctuation">)</span>
 <span class="token comment"># jar包路径</span>
-JAR_PATH=<span class="token string">'/srm/application/back'</span>
+JAR_PATH=<span class="token string">'/usr/application/back'</span>
 <span class="token comment"># 日志路径</span>
-LOG_PATH=<span class="token string">'/srm/application/back/logs'</span>
+LOG_PATH=<span class="token string">'/usr/application/back/logs'</span>
 <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   local MODULE=
   local MODULE_NAME=
@@ -555,12 +556,14 @@ case <span class="token string">"<span class="token variable">$1</span>"</span> 
 esac
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>常用命令：</strong></p>
-<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">重启全部：sh srmBackApplication<span class="token punctuation">.</span>sh restart all
-重启单个：sh srmBackApplication<span class="token punctuation">.</span>sh restart isrm-system（单个服务名）
-停止全部：sh srmBackApplication<span class="token punctuation">.</span>sh stop all
-停止单个：sh srmBackApplication<span class="token punctuation">.</span>sh stop isrm-system（单个服务名）
-启动全部：sh srmBackApplication<span class="token punctuation">.</span>sh <span class="token function">start</span> all
-启动单个：sh srmBackApplication<span class="token punctuation">.</span>sh <span class="token function">start</span> isrm-system（单个服务名）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell">重启全部：sh application<span class="token punctuation">.</span>sh restart all
+重启单个：sh application<span class="token punctuation">.</span>sh restart system（单个服务名）
+停止全部：sh application<span class="token punctuation">.</span>sh stop all
+停止单个：sh application<span class="token punctuation">.</span>sh stop system（单个服务名）
+启动全部：sh application<span class="token punctuation">.</span>sh <span class="token function">start</span> all
+启动单个：sh application<span class="token punctuation">.</span>sh <span class="token function">start</span> system（单个服务名）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
                 
             </div>
             <hr/>
@@ -996,7 +999,7 @@ esac
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">25.3k</span>
+                        class="white-color">24.7k</span>
             
             
             
